@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-ViewModels:bs"
+             x:Class="bs.ViewModels.CadastrarDepartamento">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Cadastrar Departamento"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="txtNome" Text="Nome: "></Entry>
+            <Button Text="Salvar" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
