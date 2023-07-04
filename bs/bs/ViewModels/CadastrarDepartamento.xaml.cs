@@ -14,19 +14,49 @@ namespace bs.ViewModels
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CadastrarDepartamento : ContentPage
     {
+        bool Edit = false;
         public CadastrarDepartamento()
         {
+            Edit = false;
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        Departamento _departamento;
+        public CadastrarDepartamento(Departamento departamento)
         {
-            ServiceDepartamento service = new ServiceDepartamento();
-            Departamento departamento = new Departamento();
+            InitializeComponent();
+            Title = "Editar Departamento";
+            _departamento = departamento;
+            txtNome.Text = _departamento.Nome;
+            txtNome.Focus();
 
-            departamento.Nome = txtNome.Text;
+            Edit = true;
+        }
 
-            service.CreateOrInsert(departamento);
+        private async void addNewDepartamento()
+        {
+            await App.MyDatabase.CreateDepartamento(new Departamento
+            {
+                Nome = txtNome.Text,
+            });
+            
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
+                await DisplayAlert("Erro", "Revisar nome informado", "OK");
+            else if(_departamento!=null)
+            {
+                EditDepartamento();
+            }else
+                addNewDepartamento();
+        }
+
+        private async void EditDepartamento()
+        {
+            _departamento.Nome = txtNome.Text;
+            await App.MyDatabase.UpdateDepartamento(_departamento);
         }
     }
 }

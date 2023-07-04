@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ViewModels\CadastrarSugestao.xaml.cs">
+      <DependentUpon>CadastrarSugestao.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ViewModels\ListarSugestoes.xaml.cs">
       <DependentUpon>ListarSugestoes.xaml</DependentUpon>
     </Compile>

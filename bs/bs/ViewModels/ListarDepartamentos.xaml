@@ -1,12 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Departamentos"
              x:Class="bs.ViewModels.ListarDepartamentos">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout>
+        <SearchBar Placeholder="Filtrar"
+                       TextChanged="SearchBar_TextChanged"/>
+        <CollectionView x:Name="departamentoList"
+                        SelectionMode="Single"
+                        Margin="20,5,20,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Editar"
+                                           BackgroundColor="AliceBlue"
+                                           CommandParameter="{Binding .}"
+                                           Invoked="SwipeItem_Invoked"/>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="AliceBlue"
+                                           CommandParameter="{Binding .}"
+                                           Invoked="SwipeItem_Invoked_1"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Id}" Grid.Row="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"></Label>
+                            <Label Text="{Binding Nome}" Grid.Row="0" Grid.Column="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"></Label>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>

@@ -9,7 +9,7 @@
         <ListView x:Name="listview" x:FieldModifier="public">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:FlyoutItemPage}">
-                    <local:FlyoutItemPage Title="Cadastrar Sugestão" IconSource="icon_about.png" TargetPage="{x:Type localv:Cadastrarsugestao}"></local:FlyoutItemPage>
+                    <local:FlyoutItemPage Title="Cadastrar Sugestão" IconSource="icon_about.png" TargetPage="{x:Type localv:CadastrarSugestao}"></local:FlyoutItemPage>
                     <local:FlyoutItemPage Title="Cadastrar Departamento" IconSource="icon_about.png" TargetPage="{x:Type localv:CadastrarDepartamento}"></local:FlyoutItemPage>
                     <local:FlyoutItemPage Title="Listar Sugestões" IconSource="icon_about.png" TargetPage="{x:Type localv:ListarSugestoes}"></local:FlyoutItemPage>
                     <local:FlyoutItemPage Title="Listar Departamentos" IconSource="icon_about.png" TargetPage="{x:Type localv:ListarDepartamentos}"></local:FlyoutItemPage>

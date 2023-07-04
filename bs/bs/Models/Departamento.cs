@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace bs.Models
 {
@@ -9,6 +10,7 @@ namespace bs.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+        [MaxLength(50)]
         public string Nome { get; set; }
     }
 }
