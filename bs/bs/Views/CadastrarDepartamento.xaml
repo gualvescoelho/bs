@@ -6,8 +6,10 @@
              x:Class="bs.ViewModels.CadastrarDepartamento">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Text="{Binding Nome}" Placeholder="Informe o nome: "></Entry>
-            <Button Text="Salvar" Command="{Binding DefinindoNome}"/>
+            <Entry Text="{Binding Nome}" Placeholder="Informe o nome: "
+                   Margin="10,0,10,0"></Entry>
+            <Button Text="Salvar" Command="{Binding DefinindoNome}"
+                    Margin="10,0,10,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

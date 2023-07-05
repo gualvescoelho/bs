@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace bs.ViewModels
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListarSugestoes : ContentPage
     {
         public ListarSugestoes()
@@ -33,8 +32,6 @@ namespace bs.ViewModels
 
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            List<Sugestao> a = new List<Sugestao>();
-            sugestaoList.ItemsSource = a;
             sugestaoList.ItemsSource = await App.MyDatabase.SearchSugestao(e.NewTextValue);
         }
     }

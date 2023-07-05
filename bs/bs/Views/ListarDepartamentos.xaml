@@ -6,6 +6,21 @@
     <StackLayout>
         <SearchBar Placeholder="Filtrar"
                        TextChanged="SearchBar_TextChanged"/>
+        <Grid Margin="0,5,0,0" BackgroundColor="LightBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="ID:" Grid.Column="0" TextColor="Black"
+                       HorizontalOptions="StartAndExpand" Margin="5,0,0,0"
+                                    VerticalOptions="CenterAndExpand"/>
+            <Label Text="Nome do Departamento:" Grid.Column="1" TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"/>
+        </Grid>
         <CollectionView x:Name="departamentoList"
                         SelectionMode="Single"
                         Margin="20,5,20,0">
@@ -26,16 +41,17 @@
                         </SwipeView.RightItems>
                         <Grid RowSpacing="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition Width="40"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Id}" Grid.Row="0"
-                                    HorizontalOptions="CenterAndExpand"
+                            <Label Text="{Binding ID}" Grid.Row="0" 
+                                    HorizontalOptions="StartAndExpand"
                                     VerticalOptions="CenterAndExpand"></Label>
                             <Label Text="{Binding Nome}" Grid.Row="0" Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
                                     VerticalOptions="CenterAndExpand"></Label>
                         </Grid>
                     </SwipeView>

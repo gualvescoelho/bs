@@ -26,6 +26,5 @@ namespace bs.ViewModels
             InitializeComponent();
             this.BindingContext = new CadastrarDepartamentoViewModel(departamento);
         }
-
     }
 }

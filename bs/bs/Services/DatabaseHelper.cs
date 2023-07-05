@@ -6,6 +6,7 @@ using bs.Models;
 using System.Collections.Generic;
 using Xamarin.Forms.Internals;
 using System;
+using System.Linq;
 
 namespace bs.Services
 {
@@ -30,19 +31,44 @@ namespace bs.Services
             return db.Table<Departamento>().ToListAsync();
         }
 
+        public async Task<bool> isDepartamentos()
+        {
+            List<Departamento> count = await db.Table<Departamento>().ToListAsync();
+
+            if(count.Count() > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public Task<int>UpdateDepartamento(Departamento departamento)
         {
             return db.UpdateAsync(departamento);
         }
 
-        public Task<int>DeleteDepartamento(Departamento departamento)
+        public async Task<int>DeleteDepartamento(Departamento departamento)
         {
-            return db.DeleteAsync(departamento);
+            List<Sugestao> Sugestoes = await ReadSugestaos();
+
+            foreach (Sugestao s in Sugestoes)
+            {
+                if (s.DepartamentoId == departamento.ID)
+                    await App.MyDatabase.DeleteSugestao(s);
+            }
+
+            return await db.DeleteAsync(departamento);
         }
 
         public Task<List<Departamento>> SearchDepartamento(string search)
         {
             return db.Table<Departamento>().Where(p => p.Nome.StartsWith(search)).ToListAsync();
+        }
+
+        public Task<List<Departamento>> SearchDepartamentoId(int search)
+        {
+            return db.Table<Departamento>().Where(p => p.ID == search).ToListAsync();
         }
 
         public Task<int> CreateSugestao(Sugestao Sugestao)
@@ -69,27 +95,36 @@ namespace bs.Services
 
         public async Task<List<Sugestao>>SearchSugestao(string search)
         {
-
-            var departamento = await SearchDepartamento(search);
-
-            var sugestoes = await db.Table<Sugestao>()
-                .Where(p =>p.Id != 0)
+            if (search == "")
+            {
+                return await db.Table<Sugestao>()
+                .Where(p => p.Id != 0)
                 .ToListAsync();
+            }
+            else
+            {
+                auxList.Clear();
+                List<Departamento> departamento = await SearchDepartamento(search);
 
-            auxList.Clear();
+                var sugestoes = await db.Table<Sugestao>()
+                    .Where(p => p.Id != 0)
+                    .ToListAsync();
 
-            foreach (Sugestao s in sugestoes) {
 
-                foreach (Departamento d in departamento)
+                foreach (Sugestao s in sugestoes)
                 {
-                    if (s.DepartamentoId == d.ID)
+
+                    foreach (Departamento d in departamento)
                     {
-                        auxList.Add(s);
+                        if (s.DepartamentoId == d.ID)
+                        {
+                            auxList.Add(s);
+                        }
                     }
                 }
-            }
 
-            return auxList;
+                return auxList;
+            }
         }
     }
 }   

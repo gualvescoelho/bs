@@ -1,5 +1,13 @@
 ﻿using bs.Models;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 
 namespace bs.ViewModels
@@ -20,7 +28,6 @@ namespace bs.ViewModels
             } 
         }
 
-
         public CadastrarDepartamentoViewModel()
         {
             Title = "Cadastrar Departamento";
@@ -37,14 +44,23 @@ namespace bs.ViewModels
         {
             get
             {
-                return new Command(() =>
-                {   
-                    if (_departamento != null)
+                return new Command(async() =>
+                {
+                    if (!String. IsNullOrWhiteSpace(Nome))
                     {
-                        EditDepartamento();
+                        if (_departamento != null)
+                            EditDepartamento();
+                        else
+                            addNewDepartamento();
+
+                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Departamento salvo com sucesso!", "OK");
                     }
                     else
-                        addNewDepartamento();
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Erro", "Verificar Nome", "OK");
+                    }
+
+                    Nome = "";
                 });
             }
         }

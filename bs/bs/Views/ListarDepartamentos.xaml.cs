@@ -41,7 +41,7 @@ namespace bs.ViewModels
         {
             var item = sender as SwipeItem;
             var emp = item.CommandParameter as Departamento;
-            var result = await DisplayAlert("Deletar", $"Deletar: {emp.Nome} ?", "Yes", "No");
+            var result = await DisplayAlert("Deletar", $"Deletar: {emp.Nome} e suas Sugestões associadas?", "Yes", "No");
             if(result)
             {
                 await App.MyDatabase.DeleteDepartamento(emp);

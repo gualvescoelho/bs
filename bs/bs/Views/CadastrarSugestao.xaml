@@ -3,20 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Cadastrar Sugestão"
              x:Class="bs.ViewModels.CadastrarSugestao">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Cadastrar Sugestão:"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="txtNome" Text="Nome do Colaborador"></Entry>
-            <Picker Title="Departamento:" 
+    <StackLayout>
+        <Entry x:Name="txtNome" Placeholder="Nome do Colaborador"
+               Margin="10,0,10,0"></Entry>
+        <Picker Title="Departamento:" 
                     x:Name="departamentoPicker"
-                    ItemDisplayBinding="{Binding Nome}">
-            </Picker>
-            
-            <Entry x:Name="txtSugestao" Text="Sugestão"></Entry>
-            <Entry x:Name="txtJustificativa" Text="Justificativa"></Entry>
-            <Button Clicked="Button_Clicked" Text="Salvar"/>
-        </StackLayout>
-    </ContentPage.Content>
+                    ItemDisplayBinding="{Binding Nome}"
+                    Margin="10,0,10,0">
+        </Picker>
+        <Entry x:Name="txtSugestao" Placeholder="Sugestão" Margin="10,0,10,0"></Entry>
+        <Entry x:Name="txtJustificativa" Placeholder="Justificativa" Margin="10,0,10,0"></Entry>
+        <Button Clicked="Button_Clicked" Text="Salvar"
+                Margin="10,0,10,0"/>
+    </StackLayout>
 </ContentPage>
