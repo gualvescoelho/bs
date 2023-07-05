@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ViewModels\CadastrarSugestao.xaml.cs">
+    <Compile Update="Views\CadastrarSugestao.xaml.cs">
       <DependentUpon>CadastrarSugestao.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\ListarSugestoes.xaml.cs">
+    <Compile Update="Views\ListarSugestoes.xaml.cs">
       <DependentUpon>ListarSugestoes.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -31,16 +31,16 @@
     <EmbeddedResource Update="Page1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewModels\CadastrarDepartamento.xaml">
+    <EmbeddedResource Update="Views\CadastrarDepartamento.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewModels\Cadastrarsugestao.xaml">
+    <EmbeddedResource Update="Views\CadastrarSugestao.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewModels\ListarDepartamentos.xaml">
+    <EmbeddedResource Update="Views\ListarDepartamentos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewModels\ListarSugestoes.xaml">
+    <EmbeddedResource Update="Views\ListarSugestoes.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

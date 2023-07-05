@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Sugestões"
+             x:Class="bs.ViewModels.ListarSugestoes">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Filtrar"
+                       TextChanged="SearchBar_TextChanged"/>
+            <CollectionView x:Name="sugestaoList"
+                        SelectionMode="Single"
+                        Margin="20,5,20,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding DepartamentoId}" Grid.Row="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"></Label>
+                            <Label Text="{Binding Descricao}" Grid.Row="0" Grid.Column="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"></Label>
+                            <Label Text="{Binding Justificativa}" Grid.Row="0" Grid.Column="2"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

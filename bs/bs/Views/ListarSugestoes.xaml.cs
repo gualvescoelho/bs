@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,17 +33,9 @@ namespace bs.ViewModels
 
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            List<Sugestao> a = new List<Sugestao>();
+            sugestaoList.ItemsSource = a;
             sugestaoList.ItemsSource = await App.MyDatabase.SearchSugestao(e.NewTextValue);
-        }
-
-        private void SwipeItem_Invoked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SwipeItem_Invoked_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
